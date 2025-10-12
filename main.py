@@ -37,7 +37,6 @@ def main():
 
     mp_pose = mp.solutions.pose
     pose = mp_pose.Pose(static_image_mode=False, min_detection_confidence=0.5, min_tracking_confidence=0.5)
-    mp_drawing = mp.solutions.drawing_utils
 
     cv2.namedWindow("image", cv2.WINDOW_NORMAL)
     cv2.setWindowProperty("image", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
@@ -57,7 +56,6 @@ def main():
     xOffset = (scrWidth-width)//2
     yOffset = (scrHeight-height)//2
 
-
     prevTime = 0
     
     prevPosLeft = lambda: None
@@ -74,7 +72,7 @@ def main():
 
     elements = []
     score = 0
-    lives = 5
+    lives = 3
 
     while cap.isOpened():
         cv2.setWindowProperty("image", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
