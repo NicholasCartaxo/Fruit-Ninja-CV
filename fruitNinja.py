@@ -80,9 +80,9 @@ def fruitNinja(image, width, height,
       random.randint(0,width),
       height,
       random.randint(-20, 20),
-      random.randint(-0.06,-0.05)*height,
+      (int)(random.uniform(-0.06,-0.05)*height),
       random.randint(1,4) <= 3,
-      random.randint(0.05,0.08)*height
+      (int)(random.uniform(0.05,0.08)*height)
     )
     elements.append(element)
 
@@ -91,7 +91,7 @@ def fruitNinja(image, width, height,
 
     element.x = (element.x + element.velX) % width
     element.y += element.velY
-    element.velY += 0.002*height
+    element.velY += (int)(0.002*height)
 
     if element.gotCut(posLeft,velocityLeft) or element.gotCut(posRight,velocityRight):
       elements.remove(element)
