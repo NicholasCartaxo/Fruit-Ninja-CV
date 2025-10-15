@@ -10,7 +10,7 @@ def getDistance(pos1, pos2):
   deltaY = (pos1.y- pos2.y)**2
   return math.sqrt(deltaX+deltaY)
 
-def hordeGenerator(width, height):
+def generateElements(width, height):
   elementsQnt = 3 if random.randint(0, 10) < 8 else 5
 
   newElements = []
@@ -20,7 +20,7 @@ def hordeGenerator(width, height):
     random.randint(0,width),
     (int)(height + 0.04 * i * height),
     random.randint(-10, 10),
-    (int)(random.uniform(-0.07,-0.06)*height),
+    (int)(random.uniform(-0.05,-0.04)*height),
     random.randint(1,4) <= 3,
     (int)(random.uniform(0.05,0.08)*height)
     )
@@ -95,11 +95,11 @@ def fruitNinja(image, width, height,
 
   if len(elements) == 0:
     if random.randint(1,1000) <= 100:
-      elements += hordeGenerator(width, height)
+      elements += generateElements(width, height)
 
   else:
     if random.randint(1,1000) <= 3:
-      elements += hordeGenerator(width, height)
+      elements += generateElements(width, height)
 
     #element = Element(
     #  random.randint(0,width),
@@ -120,7 +120,7 @@ def fruitNinja(image, width, height,
 
     element.x = (element.x + element.velX) % width
     element.y += element.velY
-    element.velY += (int)(0.003*height)
+    element.velY += (int)(0.002*height)
 
     if element.gotCut(posLeft,velocityLeft) or element.gotCut(posRight,velocityRight):
       elements.remove(element)
