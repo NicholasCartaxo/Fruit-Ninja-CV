@@ -18,7 +18,7 @@ def generateElements(width, height):
   for i in range(elementsQnt):
     element = Element(
     random.randint(0,width),
-    (int)(height + 0.04 * i * height),
+    (int)(height + random.uniform(0.04, 0.08) * i * height),
     random.randint(-10, 10),
     (int)(random.uniform(-0.05,-0.04)*height),
     random.randint(1,4) <= 3,
@@ -94,7 +94,7 @@ def fruitNinja(image, width, height,
               posRight, velocityRight):
 
   if len(elements) == 0:
-    if random.randint(1,1000) <= 100:
+    if random.randint(1,1000) <= 50:
       elements += generateElements(width, height)
 
   else:
@@ -120,7 +120,7 @@ def fruitNinja(image, width, height,
 
     element.x = (element.x + element.velX) % width
     element.y += element.velY
-    element.velY += (int)(0.002*height)
+    element.velY += (int)(0.0015*height)
 
     if element.gotCut(posLeft,velocityLeft) or element.gotCut(posRight,velocityRight):
       elements.remove(element)
