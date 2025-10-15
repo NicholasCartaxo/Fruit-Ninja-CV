@@ -92,9 +92,14 @@ def fruitNinja(image, width, height,
               elements, score, lives, 
               posLeft, velocityLeft,
               posRight, velocityRight):
-  
-  if random.randint(1,1000) <= 10:
-    elements += hordeGenerator(width, height)
+
+  if len(elements) == 0:
+    if random.randint(1,1000) <= 100:
+      elements += hordeGenerator(width, height)
+
+  else:
+    if random.randint(1,1000) <= 3:
+      elements += hordeGenerator(width, height)
 
     #element = Element(
     #  random.randint(0,width),
@@ -107,6 +112,10 @@ def fruitNinja(image, width, height,
     #elements.append(element)
 
   for element in elements:
+
+    if element.y >= 2*height:
+      elements.remove(element)
+
     renderElement(image, width, height, element)
 
     element.x = (element.x + element.velX) % width
