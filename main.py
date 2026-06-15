@@ -106,7 +106,8 @@ def main():
         elements, score, lives = fruitNinja(image, width, height, 
                                             elements, score, lives,
                                             posLeft, velocityLeft, 
-                                            posRight, velocityRight)
+                                            posRight, velocityRight,
+                                            deltaTime)
 
 
 
