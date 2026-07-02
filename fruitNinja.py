@@ -91,7 +91,8 @@ class Element:
 def fruitNinja(image, width, height, 
               elements, score, lives, 
               posLeft, velocityLeft,
-              posRight, velocityRight):
+              posRight, velocityRight,
+              deltaTime):
 
   if len(elements) == 0:
     if random.randint(1,1000) <= 50:
@@ -101,26 +102,15 @@ def fruitNinja(image, width, height,
     if random.randint(1,1000) <= 3:
       elements += generateElements(width, height)
 
-    #element = Element(
-    #  random.randint(0,width),
-    #  height,
-    #  random.randint(-10, 10),
-    #  (int)(random.uniform(-0.07,-0.06)*height),
-    #  random.randint(1,4) <= 3,
-    #  (int)(random.uniform(0.05,0.08)*height)
-    #)
-    #elements.append(element)
-
   for element in elements:
 
     if element.y >= 2*height:
       elements.remove(element)
 
     renderElement(image, width, height, element)
-
     element.x = (element.x + element.velX) % width
     element.y += element.velY
-    element.velY += (int)(0.0015*height)
+    element.velY += (int)(0.013*height*deltaTime)
 
     if element.gotCut(posLeft,velocityLeft) or element.gotCut(posRight,velocityRight):
       elements.remove(element)
